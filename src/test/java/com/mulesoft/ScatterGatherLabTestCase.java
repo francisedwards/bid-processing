@@ -39,7 +39,7 @@ public class ScatterGatherLabTestCase extends FunctionalTestCase {
     @Test
     public void testAuctionService() throws Exception {
       MuleClient client = muleContext.getClient();
-      MuleMessage result = client.request("vm://auction.service", 60000);
+		MuleMessage result = client.request("vm://auction.service", 10000);
       assertNotNull(result);
       assertNull(result.getExceptionPayload());
       assertFalse(result.getPayload() instanceof NullPayload);
