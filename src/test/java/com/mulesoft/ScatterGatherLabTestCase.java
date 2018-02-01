@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class ScatterGatherLabTestCase extends FunctionalTestCase {
 
-    private final int NO_OF_BIDS = 100;
+    private final int NO_OF_BIDS = 10;
 
     @Override
     protected void doSetUp() throws Exception {
@@ -39,7 +39,7 @@ public class ScatterGatherLabTestCase extends FunctionalTestCase {
     @Test
     public void testAuctionService() throws Exception {
       MuleClient client = muleContext.getClient();
-      MuleMessage result = client.request("vm://auction.service", RECEIVE_TIMEOUT * 3);
+      MuleMessage result = client.request("vm://auction.service", 60000);
       assertNotNull(result);
       assertNull(result.getExceptionPayload());
       assertFalse(result.getPayload() instanceof NullPayload);
